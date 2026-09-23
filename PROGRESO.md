@@ -22,8 +22,10 @@ Proveedor: Insights · Closer: Romina · Dueña del negocio: Viviana (administra
 - Bloque 18: Screenshots en /screenshots (script `scripts/screenshots.mjs`).
 - Rebranding: la agencia se llama «Yo me quiero casar, ¿y usted?».
 
+- Bloque 19: repo privado https://github.com/insightsapps-mvp/truelove-mvp (la cuenta doncelromi no tiene permisos en developers-insights).
+
 ## En curso
-- Bloque 19: repo en GitHub.
+- (nada)
 
 ## Pendiente
 - (nada)
