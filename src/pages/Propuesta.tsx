@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowUpRight, Check, Eye, EyeOff, FileText, MessageCircle, Printer, RotateCw, ShieldCheck, Timer, Rocket } from 'lucide-react'
+import { ArrowUpRight, Check, Eye, EyeOff, FileText, MessageCircle, Printer, RotateCw, ShieldCheck, Smartphone, Timer, Rocket } from 'lucide-react'
 import { RingsIcon } from '@/components/Logo'
 import { useLang, useTr } from '@/lib/i18n'
 import { useGo } from '@/lib/session'
@@ -46,14 +46,15 @@ export default function Propuesta() {
           </h1>
           <p className="mt-3 text-[15px] leading-relaxed text-muted sm:text-base">
             {tr(
-              'Tu plataforma completa para gestionar candidatos, entrevistas psicológicas y presentaciones con fines matrimoniales: CRM de 3 roles, perfiles con fotos y música, motor de compatibilidad avanzado, pagos y onboarding automatizado. Todo en una sola entrega.',
-              'Your complete platform to manage candidates, psychological interviews and marriage-minded introductions: 3-role CRM, profiles with photos and music, advanced compatibility engine, payments and automated onboarding. All in a single delivery.',
+              'Tu plataforma completa para gestionar candidatos, entrevistas psicológicas y presentaciones con fines matrimoniales: CRM de 3 roles, perfiles con fotos y música, motor de compatibilidad avanzado, pagos y onboarding automatizado. En la web y como app Android publicada en Google Play. Todo en una sola entrega.',
+              'Your complete platform to manage candidates, psychological interviews and marriage-minded introductions: 3-role CRM, profiles with photos and music, advanced compatibility engine, payments and automated onboarding. On the web and as an Android app published on Google Play. All in a single delivery.',
             )}
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             <span className="chip border border-border py-1"><Rocket className="h-3.5 w-3.5 text-accent" /> {tr('Prototipo funcional en 3 semanas', 'Working prototype in 3 weeks')}</span>
             <span className="chip border border-border py-1"><Timer className="h-3.5 w-3.5 text-accent" /> {tr('Entrega completa en 2,5 meses', 'Full delivery in 2.5 months')}</span>
             <span className="chip border border-border py-1"><ShieldCheck className="h-3.5 w-3.5 text-accent" /> {tr('Garantía 100%', '100% guarantee')}</span>
+            <span className="chip border border-border py-1"><Smartphone className="h-3.5 w-3.5 text-accent" /> {tr('Web + app Android en Google Play', 'Web + Android app on Google Play')}</span>
           </div>
         </div>
         <div className="no-print flex shrink-0 gap-2">
@@ -105,6 +106,31 @@ export default function Propuesta() {
             </article>
           ))}
         </div>
+
+        {/* App Android */}
+        <div className="card mt-3 flex flex-col gap-4 border-accent bg-accent-soft p-5 ring-1 ring-accent/30 sm:flex-row sm:items-center">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent text-white"><Smartphone className="h-6 w-6" /></span>
+          <div className="flex-1">
+            <p className="label-xs !text-accent">{tr('Incluido', 'Included')}</p>
+            <h3 className="mt-0.5 text-lg font-bold">{tr('También en Android: app publicada en Google Play', 'Also on Android: app published on Google Play')}</h3>
+            <p className="mt-1 text-sm text-muted">
+              {tr(
+                'Tus candidatos descargan la app, se registran, pagan, suben sus fotos y canciones, piden su entrevista y reciben sus parejas sugeridas desde el celular. Nos encargamos de la publicación en Google Play con la ficha de la agencia.',
+                'Your candidates download the app, sign up, pay, upload their photos and songs, book their interview and receive suggested matches from their phone. We handle publishing on Google Play with the agency’s listing.',
+              )}
+            </p>
+            <ul className="mt-3 grid gap-1.5 text-sm sm:grid-cols-2">
+              {[
+                ['Misma plataforma y mismos datos que la web', 'Same platform and same data as the web'],
+                ['Notificaciones push de turnos y matches', 'Push notifications for appointments and matches'],
+                ['Fotos desde la cámara o la galería del celular', 'Photos from the phone camera or gallery'],
+                ['Publicación en Google Play incluida', 'Google Play publishing included'],
+              ].map((b) => (
+                <li key={b[0]} className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />{L(b as [string, string])}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </section>
 
       {/* 4) INVERSIÓN — siempre al final */}
@@ -133,29 +159,29 @@ export default function Propuesta() {
               >
                 <div className="border-t border-border p-5 sm:p-6">
                   <p className="label-xs">{tr('Inversión total · Plataforma completa, una sola entrega', 'Total investment · Complete platform, single delivery')}</p>
-                  <p className="num mt-2 text-[44px] font-bold leading-none tracking-tight sm:text-[56px]">USD {lang === 'es' ? '5.000' : '5,000'}</p>
+                  <p className="num mt-2 text-[44px] font-bold leading-none tracking-tight sm:text-[56px]">USD {lang === 'es' ? '6.000' : '6,000'}</p>
                   <p className="mt-3 max-w-2xl text-sm text-muted">
-                    {tr('Incluye los 9 módulos, relevamiento inicial, entrega completa en 2,5 meses y 1 mes de soporte post-entrega.', 'Includes all 9 modules, initial discovery, full delivery in 2.5 months and 1 month of post-delivery support.')}
+                    {tr('Incluye los 9 módulos en la web y la app Android publicada en Google Play, relevamiento inicial, entrega completa en 2,5 meses y 1 mes de soporte post-entrega.', 'Includes all 9 modules on the web plus the Android app published on Google Play, initial discovery, full delivery in 2.5 months and 1 month of post-delivery support.')}
                   </p>
 
                   <div className="mt-6 grid gap-3 md:grid-cols-2">
                     <div className="rounded-xl border border-border p-4">
                       <div className="flex items-center justify-between"><p className="label-xs">{tr('Pago 1 · al firmar', 'Payment 1 · on signing')}</p><span className="num text-sm text-muted">50%</span></div>
-                      <p className="num mt-1 text-2xl">USD {lang === 'es' ? '2.500' : '2,500'}</p>
+                      <p className="num mt-1 text-2xl">USD {lang === 'es' ? '3.000' : '3,000'}</p>
                       <p className="mt-1 text-sm text-muted">{tr('Arrancamos el relevamiento y el desarrollo.', 'We start discovery and development.')}</p>
                     </div>
                     <div className="rounded-xl border border-border p-4">
                       <div className="flex items-center justify-between"><p className="label-xs">{tr('Pago 2 · a los 30 días', 'Payment 2 · after 30 days')}</p><span className="num text-sm text-muted">50%</span></div>
-                      <p className="num mt-1 text-2xl">USD {lang === 'es' ? '2.500' : '2,500'}</p>
+                      <p className="num mt-1 text-2xl">USD {lang === 'es' ? '3.000' : '3,000'}</p>
                     </div>
                   </div>
 
                   <div className="mt-3 rounded-xl border-2 border-accent bg-accent-soft p-4">
                     <p className="font-semibold">{tr('Pagando el 100% por adelantado: 15% de descuento', 'Paying 100% upfront: 15% discount')}</p>
                     <div className="mt-2 flex flex-wrap items-baseline gap-3">
-                      <span className="num text-lg text-muted line-through">USD {lang === 'es' ? '5.000' : '5,000'}</span>
-                      <span className="num text-3xl font-bold text-accent">USD {lang === 'es' ? '4.250' : '4,250'}</span>
-                      <span className="chip bg-accent text-white">{tr('ahorrás', 'you save')} USD 750</span>
+                      <span className="num text-lg text-muted line-through">USD {lang === 'es' ? '6.000' : '6,000'}</span>
+                      <span className="num text-3xl font-bold text-accent">USD {lang === 'es' ? '5.100' : '5,100'}</span>
+                      <span className="chip bg-accent text-white">{tr('ahorrás', 'you save')} USD 900</span>
                     </div>
                   </div>
 
