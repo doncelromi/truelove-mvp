@@ -295,6 +295,7 @@ export function Tabs<T extends string>({
         <button
           key={it.value}
           role="tab"
+          data-tab={it.value}
           aria-selected={value === it.value}
           onClick={() => onChange(it.value)}
           className={cn(
