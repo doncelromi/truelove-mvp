@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #fafafa;
+  --border: #e4e4e7;
+  --text: #09090b;
+  --muted: #71717a;
+  --accent: #9f1d48;
+  --accent-hover: #861a3d;
+  --accent-soft: #fdf2f5;
+  --accent-ring: rgba(159, 29, 72, 0.25);
+  color-scheme: light;
+}
+.dark {
+  --bg: #09090b;
+  --surface: #131316;
+  --surface-2: #18181b;
+  --border: rgba(255, 255, 255, 0.07);
+  --text: #f4f4f5;
+  --muted: #a1a1aa;
+  --accent: #f0587f;
+  --accent-hover: #e0456d;
+  --accent-soft: rgba(240, 88, 127, 0.12);
+  --accent-ring: rgba(240, 88, 127, 0.3);
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+body {
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  border-color: var(--border);
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-border bg-surface shadow-card;
+  }
+  .label-xs {
+    @apply text-[10.5px] font-semibold uppercase tracking-wider text-muted;
+  }
+  .num {
+    @apply font-mono font-semibold tabular-nums;
+  }
+  .btn {
+    @apply inline-flex h-9 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-3.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ring disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accent-hover;
+  }
+  .btn-outline {
+    @apply btn border border-border bg-surface text-fg hover:bg-surface-2;
+  }
+  .btn-accent-outline {
+    @apply btn border border-accent text-accent hover:bg-accent-soft;
+  }
+  .btn-ghost {
+    @apply btn text-fg hover:bg-surface-2;
+  }
+  .btn-sm {
+    @apply h-8 px-2.5 text-xs;
+  }
+  .input {
+    @apply h-10 w-full rounded-lg border border-border bg-surface px-3 text-sm text-fg placeholder:text-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent-ring;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .modal-center {
+    @apply fixed inset-0 m-auto h-fit max-h-[88vh] overflow-y-auto;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@keyframes tl-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+.pulse-soft {
+  animation: tl-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes tl-pop {
+  from {
+    opacity: 0;
+    scale: 0.95;
+    translate: 0 12px;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+  }
+}
+.pop-in {
+  animation: tl-pop 0.3s ease-out both;
+}
+
+@keyframes tl-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: tl-fade 0.2s ease-out both;
+}
+
+@keyframes tl-slide-in-right {
+  from {
+    translate: 100% 0;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+.slide-in-right {
+  animation: tl-slide-in-right 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes tl-slide-in-left {
+  from {
+    translate: -100% 0;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+.slide-in-left {
+  animation: tl-slide-in-left 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+input[type='range'] {
+  accent-color: var(--accent);
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  html,
+  body {
+    background: #fff !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+}
