@@ -63,9 +63,11 @@ type Store = {
   removeSong: (memberId: string, songId: string) => void
   reorderSongs: (memberId: string, ids: string[]) => void
   setIdealSong: (memberId: string, songId: string) => void
-  // camino del usuario (Martín)
-  onboardingStep: number // paso actual (1..5); 6 = aprobado
+  // camino del usuario (Martín o la cuenta creada en /registro)
+  currentUserId: string
+  onboardingStep: number // paso actual del usuario actual (1..5); 6 = aprobado
   setOnboardingStep: (n: number) => void
+  createMember: (data: { nombre: string; apellido: string; email: string; genero: 'M' | 'F'; edad: number; ciudad: string }) => string
   decisions: Record<string, Decision>
   decide: (memberId: string, d: Decision) => void
 }
@@ -88,7 +90,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [filters, setFilters] = useState<HardFilters>(DEFAULT_FILTERS)
   const [presented, setPresented] = useState<[string, string][]>(PRESENTED_PAIRS)
   const [membershipPrice, setMembershipPrice] = useState(MEMBERSHIP_PRICE)
-  const [onboardingStep, setOnboardingStep] = useState(4)
+  const [currentUserId, setCurrentUserId] = useState(MARTIN_ID)
+  const [onboarding, setOnboarding] = useState<Record<string, number>>({ [MARTIN_ID]: 4 })
+  const onboardingStep = onboarding[currentUserId] ?? 2
+  const setOnboardingStep = useCallback((n: number) => setOnboarding((o) => ({ ...o, [currentUserId]: n })), [currentUserId])
   const [decisions, setDecisions] = useState<Record<string, Decision>>({})
 
   const byId = useCallback((id: string) => members.find((m) => m.id === id), [members])
@@ -187,12 +192,42 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const decide = useCallback<Store['decide']>(
     (memberId, d) => {
       setDecisions((x) => ({ ...x, [memberId]: d }))
-      updateMember(MARTIN_ID, (m) => ({
+      updateMember(currentUserId, (m) => ({
         rechazados: d === 'no' ? [...new Set([...m.rechazados, memberId])] : m.rechazados.filter((r) => r !== memberId),
       }))
     },
-    [updateMember],
+    [updateMember, currentUserId],
   )
+
+  const createMember = useCallback<Store['createMember']>((d) => {
+    const id = `new-${Date.now()}`
+    const base = INITIAL_MEMBERS[0]
+    const m: Member = {
+      ...base,
+      id,
+      nombre: d.nombre,
+      apellido: d.apellido,
+      genero: d.genero,
+      edad: d.edad,
+      ciudad: d.ciudad,
+      estado: 'incompleto',
+      pago: 'pendiente',
+      fechaAlta: new Date().toISOString(),
+      completitud: 15,
+      bio: { es: '', en: '' },
+      fotos: [],
+      canciones: [],
+      rechazados: [],
+      etiquetasPsico: [],
+      cuestionario: [],
+      valores: [],
+      hobbies: [],
+    }
+    setMembers((ms) => [...ms, m])
+    setOnboarding((o) => ({ ...o, [id]: 2 }))
+    setCurrentUserId(id)
+    return id
+  }, [])
 
   const scoreCtx = useMemo<ScoreContext>(() => ({ byId, presented }), [byId, presented])
 
@@ -209,12 +244,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       membershipPrice, setMembershipPrice,
       addPhotos, setCover, removePhoto, reorderPhotos,
       addSong, removeSong, reorderSongs, setIdealSong,
-      onboardingStep, setOnboardingStep,
+      currentUserId, onboardingStep, setOnboardingStep, createMember,
       decisions, decide,
     }),
     [members, byId, updateMember, interviews, transactions, automations, automationLogs, audit, addAudit, suggestions,
       weights, advanced, filters, presented, addPresented, scoreCtx, membershipPrice, addPhotos, setCover, removePhoto,
-      reorderPhotos, addSong, removeSong, reorderSongs, setIdealSong, onboardingStep, decisions, decide],
+      reorderPhotos, addSong, removeSong, reorderSongs, setIdealSong, currentUserId, onboardingStep, setOnboardingStep, createMember, decisions, decide],
   )
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>
 }
