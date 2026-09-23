@@ -17,7 +17,7 @@ export default {
         fg: 'var(--text)',
         muted: 'var(--muted)',
         accent: {
-          DEFAULT: 'var(--accent)',
+          DEFAULT: 'rgb(var(--accent-rgb) / <alpha-value>)',
           hover: 'var(--accent-hover)',
           soft: 'var(--accent-soft)',
           ring: 'var(--accent-ring)',

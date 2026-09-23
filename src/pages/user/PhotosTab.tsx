@@ -90,7 +90,7 @@ export default function PhotosTab({ member }: { member: Member }) {
 
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
         <SortableContext items={photos.map((p) => p.id)} strategy={rectSortingStrategy}>
-          <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
             {photos.map((p) => (
               <SortablePhoto
                 key={p.id}
