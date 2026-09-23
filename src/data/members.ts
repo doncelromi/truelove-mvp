@@ -181,6 +181,8 @@ function buildMember(r: Row, i: number): Member {
 export const INITIAL_MEMBERS: Member[] = ROWS.map(buildMember)
 
 export const MARTIN_ID = 'h01'
+/** La psicóloga demo es Lic. Carolina Méndez */
+export const PSICO_ID = 'p1'
 export const DEFAULT_ADMIN_MEMBER = 'h02'
 
 /** Pares que ya fueron presentados (para "Evitar matches repetidos") */
