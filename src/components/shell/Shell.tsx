@@ -75,7 +75,7 @@ function RoleSwitcher({ className }: { className?: string }) {
   )
 }
 
-function AvatarMenu() {
+function UserMenu() {
   const { role, logout } = useSession()
   const navigate = useNavigate()
   const t = useT()
@@ -294,7 +294,7 @@ export default function Shell() {
           <div className="flex shrink-0 items-center gap-2.5">
             <Logo compact />
             <div className="leading-tight">
-              <p className="text-[14px] font-semibold tracking-tight lg:hidden 2xl:block">Agencia True Love</p>
+              <p className="hidden text-[14px] font-semibold tracking-tight sm:block lg:hidden 2xl:block">Yo me quiero casar, ¿y usted?</p>
               <p className="text-[9.5px] font-bold tracking-wider text-accent">{t(ROLE_KICKER[role])}</p>
             </div>
           </div>
@@ -313,7 +313,7 @@ export default function Shell() {
               <MessageCircle className="h-3.5 w-3.5" />
               {t('cta.start')}
             </a>
-            <AvatarMenu />
+            <UserMenu />
           </div>
           <div className="ml-auto flex items-center gap-2 lg:hidden">
             <a href={WHATSAPP_URL} target="_blank" rel="noopener" data-tour="whatsapp-cta" className="btn-accent-outline h-8 px-2.5 text-xs">

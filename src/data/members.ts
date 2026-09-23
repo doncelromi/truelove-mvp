@@ -17,9 +17,9 @@ import type {
 } from './types'
 
 export const PSICOLOGAS: Psicologa[] = [
-  { id: 'p1', nombre: 'Lic. Carolina Méndez', color: '#9F1D48', email: 'carolina@truelove.demo' },
-  { id: 'p2', nombre: 'Lic. Paula Iturralde', color: '#2563eb', email: 'paula@truelove.demo' },
-  { id: 'p3', nombre: 'Lic. Andrea Giménez', color: '#0d9488', email: 'andrea@truelove.demo' },
+  { id: 'p1', nombre: 'Lic. Carolina Méndez', color: '#9F1D48', email: 'carolina@yomequierocasar.demo' },
+  { id: 'p2', nombre: 'Lic. Paula Iturralde', color: '#2563eb', email: 'paula@yomequierocasar.demo' },
+  { id: 'p3', nombre: 'Lic. Andrea Giménez', color: '#0d9488', email: 'andrea@yomequierocasar.demo' },
 ]
 export const psicoById = (id: string) => PSICOLOGAS.find((p) => p.id === id) ?? PSICOLOGAS[0]
 

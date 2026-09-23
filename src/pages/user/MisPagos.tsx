@@ -32,7 +32,7 @@ export default function MisPagos() {
       <div className="card flex flex-col gap-4 p-6 sm:flex-row sm:items-center">
         <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-soft text-accent"><BadgeCheck className="h-6 w-6" /></span>
         <div className="flex-1">
-          <p className="label-xs">{tr('Membresía True Love', 'True Love Membership')}</p>
+          <p className="label-xs">{tr('Membresía de la agencia', 'Agency membership')}</p>
           <p className="mt-0.5 text-xl font-bold">{paid ? tr('Activa', 'Active') : tr('Pendiente de pago', 'Payment pending')}</p>
           <p className="text-sm text-muted">{tr('Incluye entrevista psicológica y presentaciones por compatibilidad.', 'Includes psychological interview and compatibility-based introductions.')}</p>
         </div>
@@ -50,7 +50,7 @@ export default function MisPagos() {
             {mine.map((t) => (
               <li key={t.id} className="flex flex-wrap items-center gap-3 px-5 py-3.5 text-sm">
                 <div className="min-w-0 flex-1">
-                  <p className="font-medium">{tr('Membresía True Love', 'True Love Membership')}</p>
+                  <p className="font-medium">{tr('Membresía de la agencia', 'Agency membership')}</p>
                   <p className="text-xs text-muted"><span className="num">{t.id}</span> · {format(new Date(t.fecha), 'd MMM yyyy', { locale: dateLocale(lang) })}</p>
                 </div>
                 <span className="num">{fmtUSD(t.monto, lang)}</span>

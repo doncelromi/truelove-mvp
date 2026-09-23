@@ -60,7 +60,7 @@ export default function Registro() {
           {!sent ? (
             <>
               <p className="label-xs">{tr('Paso 1 de 5 · Tu cuenta', 'Step 1 of 5 · Your account')}</p>
-              <h1 className="mt-1 text-2xl font-bold tracking-tight">{tr('Creá tu cuenta en True Love', 'Create your True Love account')}</h1>
+              <h1 className="mt-1 text-2xl font-bold tracking-tight">{tr('Creá tu cuenta en la agencia', 'Create your agency account')}</h1>
               <p className="mt-1 text-sm text-muted">
                 {tr('Un proceso cuidado y confidencial, pensado para quienes buscan casarse.', 'A careful, confidential process for people who want to get married.')}
               </p>

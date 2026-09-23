@@ -11,9 +11,9 @@ import { useSession } from '@/lib/session'
 import { WHATSAPP_URL } from '@/lib/utils'
 
 const ACCOUNTS: { role: Role; label: [string, string]; email: string }[] = [
-  { role: 'admin', label: ['Viviana · Administradora', 'Viviana · Administrator'], email: 'viviana@truelove.demo' },
-  { role: 'psico', label: ['Lic. Carolina · Psicóloga', 'Lic. Carolina · Psychologist'], email: 'carolina@truelove.demo' },
-  { role: 'user', label: ['Martín · Usuario', 'Martín · Member'], email: 'martin@truelove.demo' },
+  { role: 'admin', label: ['Viviana · Administradora', 'Viviana · Administrator'], email: 'viviana@yomequierocasar.demo' },
+  { role: 'psico', label: ['Lic. Carolina · Psicóloga', 'Lic. Carolina · Psychologist'], email: 'carolina@yomequierocasar.demo' },
+  { role: 'user', label: ['Martín · Usuario', 'Martín · Member'], email: 'martin@yomequierocasar.demo' },
 ]
 
 export default function Login() {
@@ -94,9 +94,9 @@ export default function Login() {
         <div className="card w-full max-w-[420px] p-7 sm:p-8">
           <div className="mb-1 flex items-center gap-2">
             <RingsIcon className="h-4 w-5" />
-            <span className="label-xs">Agencia True Love</span>
+            <span className="label-xs">Yo me quiero casar, ¿y usted?</span>
           </div>
-          <h2 className="text-2xl font-bold tracking-tight">{tr('Ingresá a True Love', 'Sign in to True Love')}</h2>
+          <h2 className="text-2xl font-bold tracking-tight">{tr('Ingresá a la agencia', 'Sign in to the agency')}</h2>
           <form onSubmit={submit} className="mt-6 space-y-4">
             <label className="block">
               <span className="mb-1.5 block text-sm font-medium">{tr('Usuario', 'Username')}</span>

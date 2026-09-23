@@ -38,7 +38,7 @@ const SCENES: SceneDef[] = [
   { view: '/mi/perfil?tab=fotos', role: 'user', selector: '[data-trailer="photo-gallery"]', action: 'reorder', duration: 8000, position: 'top', chapter: ['Candidato', 'Candidate'], title: ['Sus propias fotos', 'Their own photos'], body: ['Sube sus fotos, elige la portada y las ordena arrastrando.', 'Uploads photos, picks the cover and sorts them by dragging.'] },
   { view: '/mi/perfil?tab=musica', role: 'user', selector: '[data-trailer="add-song"]', click: true, duration: 7000, chapter: ['Candidato', 'Candidate'], title: ['Las canciones que lo representan', 'The songs that represent them'], body: ['Tres temas, una “canción ideal” y la frase de por qué la eligió.', 'Three songs, an “ideal song” and a line on why they chose it.'] },
   { view: '/mi/matches', role: 'user', selector: '[data-trailer="user-top-match"]', duration: 7000, position: 'top', chapter: ['Candidato', 'Candidate'], title: ['Parejas sugeridas', 'Suggested matches'], body: ['Valentina al 91%: “Comparten gustos musicales” y quieren casarse en menos de 2 años.', 'Valentina at 91%: “Share musical taste” and both want to marry within 2 years.'] },
-  { cta: true, duration: 8500, position: 'center', chapter: ['Insights', 'Insights'], title: ['Agencia True Love, lista para lanzar', 'Agencia True Love, ready to launch'], body: ['Prototipo en 3 semanas. Plataforma completa en 2,5 meses.', 'Prototype in 3 weeks. Complete platform in 2.5 months.'] },
+  { cta: true, duration: 8500, position: 'center', chapter: ['Insights', 'Insights'], title: ['«Yo me quiero casar, ¿y usted?», lista para lanzar', '«Yo me quiero casar, ¿y usted?», ready to launch'], body: ['Prototipo en 3 semanas. Plataforma completa en 2,5 meses.', 'Prototype in 3 weeks. Complete platform in 2.5 months.'] },
 ]
 
 /** Ruta /trailer: arranca el modo trailer sin credenciales */
@@ -108,7 +108,13 @@ export function TrailerOverlay() {
         if (tries > 0) later(() => locate(tries - 1), 350)
         return
       }
-      el.scrollIntoView({ block: s.position === 'top' ? 'start' : 'center', behavior: 'smooth' })
+      el.scrollIntoView({ block: s.position === 'top' ? 'start' : 'center' })
+      if (s.position === 'top') window.scrollBy(0, -88) // deja lugar al header sticky
+      const remeasure = () => {
+        const r = el.getBoundingClientRect()
+        setBox({ x: r.left - 6, y: r.top - 6, w: r.width + 12, h: r.height + 12 })
+      }
+      ;[700, 1400, 2500].forEach((ms) => later(remeasure, ms))
       later(() => {
         const r = el.getBoundingClientRect()
         const b = { x: r.left - 6, y: r.top - 6, w: r.width + 12, h: r.height + 12 }

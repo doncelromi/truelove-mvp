@@ -185,7 +185,7 @@ export default function Tour() {
     <div className="fixed inset-0 z-[90]" aria-live="polite">
       {/* fondo con agujero limpio: path evenodd (rectángulo completo + rectángulo redondeado del target) */}
       <svg className="absolute inset-0 h-full w-full" width={vp.w} height={vp.h}>
-        <path fillRule="evenodd" fill="rgba(10,10,10,.55)" d={`M0 0H${vp.w}V${vp.h}H0Z${rect ? roundedRect(rect, 12) : ''}`} />
+        <path fillRule="evenodd" fill="#0a0a0a" fillOpacity={0.55} d={`M0 0H${vp.w}V${vp.h}H0Z${rect ? roundedRect(rect, 12) : ''}`} />
       </svg>
       {rect && (
         <div

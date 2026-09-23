@@ -90,7 +90,7 @@ export default function Pagos() {
                           </div>
                         )}
                       </td>
-                      <td className="px-3 py-2 text-muted">{tr('Membresía True Love', 'True Love Membership')}</td>
+                      <td className="px-3 py-2 text-muted">{tr('Membresía de la agencia', 'Agency membership')}</td>
                       <td className="num px-3 py-2 text-right">{t.monto}</td>
                       <td className="px-3 py-2"><TxBadge estado={t.estado} /></td>
                       <td className="whitespace-nowrap px-3 py-2 text-muted">{format(new Date(t.fecha), 'd MMM yyyy', { locale: dateLocale(lang) })}</td>
@@ -136,7 +136,7 @@ export default function Pagos() {
             <div className="rounded-xl border border-border p-4 text-sm">
               <div className="flex justify-between"><span className="text-muted">{tr('Comprobante', 'Receipt')}</span><span className="num">{receipt.id}</span></div>
               <div className="mt-1.5 flex justify-between"><span className="text-muted">{tr('Miembro', 'Member')}</span><span>{byId(receipt.memberId)?.nombre} {byId(receipt.memberId)?.apellido}</span></div>
-              <div className="mt-1.5 flex justify-between"><span className="text-muted">{tr('Concepto', 'Item')}</span><span>{tr('Membresía True Love', 'True Love Membership')}</span></div>
+              <div className="mt-1.5 flex justify-between"><span className="text-muted">{tr('Concepto', 'Item')}</span><span>{tr('Membresía de la agencia', 'Agency membership')}</span></div>
               <div className="mt-1.5 flex justify-between"><span className="text-muted">{tr('Fecha', 'Date')}</span><span>{format(new Date(receipt.fecha), 'd MMM yyyy', { locale: dateLocale(lang) })}</span></div>
               <div className="mt-3 flex justify-between border-t border-border pt-3 font-semibold"><span>Total</span><span className="num">{fmtUSD(receipt.monto, lang)}</span></div>
             </div>

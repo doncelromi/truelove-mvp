@@ -89,7 +89,9 @@ export default function Onboarding() {
           ))}
         </div>
         <div className="mt-2 hidden grid-cols-5 gap-1.5 text-[11px] text-muted sm:grid">
-          {steps.map((s) => <span key={s.n} className={cn(step >= s.n && 'font-medium text-fg')}>{s.n}. {s.title.split(' ').slice(0, 2).join(' ')}</span>)}
+          {[tr('Cuenta', 'Account'), tr('Pago', 'Payment'), tr('Perfil', 'Profile'), tr('Entrevista', 'Interview'), tr('Aprobación', 'Approval')].map((l, k) => (
+            <span key={l} className={cn(step >= k + 1 && 'font-medium text-fg')}>{k + 1}. {l}</span>
+          ))}
         </div>
       </div>
 
@@ -171,7 +173,7 @@ export default function Onboarding() {
                     <>
                       <p className="text-sm text-muted">
                         {step >= 6
-                          ? tr('Aprobado por tu psicóloga. ¡Bienvenido a True Love!', 'Approved by your psychologist. Welcome to True Love!')
+                          ? tr('Aprobado por tu psicóloga. ¡Bienvenido a la agencia!', 'Approved by your psychologist. Welcome to the agency!')
                           : tr('Tu psicóloga está revisando tu entrevista. Si no sos aprobado, te explicamos el motivo y te devolvemos la membresía.', 'Your psychologist is reviewing your interview. If you aren’t approved, we explain why and refund your membership.')}
                       </p>
                     </>

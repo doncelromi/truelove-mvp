@@ -76,7 +76,7 @@ export default function Agenda() {
           </div>
         </div>
         <div className="card h-fit">
-          <CardHeader title={tr('Hoy', 'Today')} subtitle={format(new Date(), "EEEE d 'de' MMMM", { locale: dateLocale(lang) })} />
+          <CardHeader title={tr('Hoy', 'Today')} subtitle={format(new Date(), lang === 'es' ? "EEEE d 'de' MMMM" : 'EEEE, MMMM d', { locale: dateLocale(lang) })} />
           {today.length === 0 ? (
             <Empty text={tr('Sin entrevistas hoy.', 'No interviews today.')} />
           ) : (

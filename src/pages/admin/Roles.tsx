@@ -51,7 +51,7 @@ export default function Roles() {
   }
 
   const team = [
-    { nombre: 'Viviana', rol: tr('Administradora · Dueña', 'Administrator · Owner'), email: 'viviana@truelove.demo', color: 'var(--accent)', n: members.length },
+    { nombre: 'Viviana', rol: tr('Administradora · Dueña', 'Administrator · Owner'), email: 'viviana@yomequierocasar.demo', color: 'var(--accent)', n: members.length },
     ...PSICOLOGAS.map((p) => ({ nombre: p.nombre, rol: tr('Psicóloga', 'Psychologist'), email: p.email, color: p.color, n: members.filter((m) => m.psicologaId === p.id).length })),
   ]
   const logs = audit.filter((a) => filter === 'todos' || a.tipo === filter)

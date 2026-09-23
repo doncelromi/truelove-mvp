@@ -43,7 +43,7 @@ export function InterviewModal({ iv, onClose }: { iv: Interview | null; onClose:
         <div><dt className="label-xs">{tr('Estado', 'Status')}</dt><dd className="mt-0.5 flex gap-1"><Badge tone={iv.estado === 'cancelada' ? 'red' : iv.estado === 'realizada' ? 'green' : 'blue'}>{tx(INTERVIEW_ESTADOS, iv.estado, lang)}</Badge>{iv.resultado && <Badge tone="accent">{tx(RESULTADOS, iv.resultado, lang)}</Badge>}</dd></div>
       </dl>
       {iv.modalidad === 'presencial' && iv.estado === 'agendada' && (
-        <p className="mt-3 rounded-lg bg-surface-2 p-2.5 text-sm"><MapPin className="mr-1 inline h-3.5 w-3.5 text-accent" />{tr('Consultorio True Love · Av. Santa Fe 2450, 3° B, Palermo', 'True Love office · Av. Santa Fe 2450, 3rd B, Palermo')}</p>
+        <p className="mt-3 rounded-lg bg-surface-2 p-2.5 text-sm"><MapPin className="mr-1 inline h-3.5 w-3.5 text-accent" />{tr('Consultorio de la agencia · Av. Santa Fe 2450, 3° B, Palermo', 'Agency office · Av. Santa Fe 2450, 3rd B, Palermo')}</p>
       )}
       {iv.notas && <p className="mt-3 rounded-lg border border-border p-3 text-sm">{iv.notas[lang]}</p>}
       {iv.estado === 'agendada' && iv.modalidad === 'zoom' && (

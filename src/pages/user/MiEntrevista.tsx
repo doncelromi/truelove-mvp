@@ -22,7 +22,7 @@ export default function MiEntrevista() {
   const [resched, setResched] = useState(false)
   const [slot, setSlot] = useState('')
   const [joined, setJoined] = useState(false)
-  const fmt = (d: string) => format(new Date(d), "EEEE d 'de' MMMM · HH:mm", { locale: dateLocale(lang) })
+  const fmt = (d: string) => format(new Date(d), lang === 'es' ? "EEEE d 'de' MMMM · HH:mm" : 'EEEE, MMMM d · HH:mm', { locale: dateLocale(lang) })
 
   return (
     <div className="mx-auto max-w-3xl">

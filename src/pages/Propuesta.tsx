@@ -42,7 +42,7 @@ export default function Propuesta() {
         <div className="max-w-3xl">
           <span className="chip bg-accent text-[10.5px] font-bold tracking-wider text-white"><FileText className="h-3 w-3" /> {tr('PROPUESTA COMERCIAL', 'COMMERCIAL PROPOSAL')}</span>
           <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-[40px] sm:leading-[1.1]">
-            {tr('Propuesta para', 'Proposal for')} <span className="text-accent">Agencia True Love</span>
+            {tr('Propuesta para', 'Proposal for')} <span className="text-accent">Yo me quiero casar, ¿y usted?</span>
           </h1>
           <p className="mt-3 text-[15px] leading-relaxed text-muted sm:text-base">
             {tr(

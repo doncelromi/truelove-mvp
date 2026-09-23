@@ -17,7 +17,7 @@ export function Logo({ className, compact = false }: { className?: string; compa
       <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-soft">
         <RingsIcon className="h-4 w-5" strokeWidth={2.2} />
       </span>
-      {!compact && <span className="text-[15px] font-semibold tracking-tight">Agencia True Love</span>}
+      {!compact && <span className="text-[15px] font-semibold tracking-tight">Yo me quiero casar, ¿y usted?</span>}
     </div>
   )
 }
