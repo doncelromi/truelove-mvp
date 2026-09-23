@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { Toaster } from 'sonner'
 import Shell from '@/components/shell/Shell'
-import TrailerMode from '@/components/trailer/TrailerMode'
+import TrailerMode, { TrailerOverlay } from '@/components/trailer/TrailerMode'
 import { roleForPath } from '@/lib/routes'
 import { SessionProvider, useSession } from '@/lib/session'
 import { StoreProvider } from '@/lib/store'
@@ -51,6 +51,7 @@ export default function App() {
     <SessionProvider>
       <StoreProvider>
         <ThemedToaster />
+        <TrailerOverlay />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />

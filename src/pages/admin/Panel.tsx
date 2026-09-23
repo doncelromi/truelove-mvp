@@ -13,6 +13,7 @@ import { PROFESIONES } from '@/data/catalog'
 import { dateLocale, useLang, useTr } from '@/lib/i18n'
 import { useGo } from '@/lib/session'
 import { useStore } from '@/lib/store'
+import { useTheme } from '@/lib/theme'
 
 const FUNNEL = [
   { es: 'Registrados', en: 'Signed up', v: 312 },
@@ -34,6 +35,9 @@ export default function Panel() {
   const pendientes = members.filter((m) => m.estado === 'pendiente').slice(0, 5)
   const sinFotos = members.filter((m) => m.fotos.length === 0).length
   const canceladas = interviews.filter((i) => i.estado === 'cancelada').length
+  const { theme } = useTheme()
+  const accent = theme === 'dark' ? '#F0587F' : '#9F1D48'
+  const grid = theme === 'dark' ? 'rgba(255,255,255,.07)' : '#e4e4e7'
   const series = MEMBERSHIP_SERIES.map((s) => ({ ...s, label: format(new Date(s.month), 'MMM', { locale: dateLocale(lang) }) }))
 
   return (
@@ -56,7 +60,7 @@ export default function Panel() {
         ]}
       />
 
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4" data-trailer="kpis">
         <Kpi label={tr('Miembros activos', 'Active members')} value="214" delta="+12" icon={<Users className="h-4 w-4" />} hint={tr('vs. mes anterior', 'vs. last month')} />
         <Kpi label={tr('Entrevistas esta semana', 'Interviews this week')} value="18" icon={<Video className="h-4 w-4" />} hint={tr(`${canceladas} canceladas`, `${canceladas} cancelled`)} />
         <Kpi label={tr('Parejas presentadas este mes', 'Couples introduced this month')} value="37" delta="+9" icon={<HeartHandshake className="h-4 w-4" />} hint={tr('vs. mes anterior', 'vs. last month')} />
@@ -71,18 +75,18 @@ export default function Panel() {
               <AreaChart data={series} margin={{ left: -18, right: 12, top: 8 }}>
                 <defs>
                   <linearGradient id="gMem" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.2} />
-                    <stop offset="100%" stopColor="var(--accent)" stopOpacity={0} />
+                    <stop offset="0%" stopColor={accent} stopOpacity={0.2} />
+                    <stop offset="100%" stopColor={accent} stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
-                <XAxis dataKey="label" tick={{ fill: 'var(--muted)', fontSize: 12 }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: 'var(--muted)', fontSize: 12 }} axisLine={false} tickLine={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke={grid} vertical={false} />
+                <XAxis dataKey="label" tick={{ fill: '#a1a1aa', fontSize: 12 }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fill: '#a1a1aa', fontSize: 12 }} axisLine={false} tickLine={false} />
                 <Tooltip
                   contentStyle={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 10, fontSize: 12 }}
                   formatter={(v: number) => [v, tr('Membresías', 'Memberships')]}
                 />
-                <Area type="monotone" dataKey="value" stroke="var(--accent)" strokeWidth={2.5} fill="url(#gMem)" dot={{ r: 3, fill: 'var(--accent)' }} />
+                <Area type="monotone" dataKey="value" stroke={accent} strokeWidth={2.5} fill="url(#gMem)" dot={{ r: 3, fill: accent }} />
               </AreaChart>
             </ResponsiveContainer>
           </div>

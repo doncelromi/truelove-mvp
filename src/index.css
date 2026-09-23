@@ -152,6 +152,15 @@ body {
   animation: tl-slide-in-left 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
+@keyframes tl-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 input[type='range'] {
   accent-color: var(--accent);
 }
