@@ -259,9 +259,10 @@ export function computeScore(
   }
   if (artists.length) {
     chips.push({ es: 'Comparten gustos musicales', en: 'Share musical taste' })
+    const join = (xs: string[], and: string) => (xs.length > 1 ? `${xs.slice(0, -1).join(', ')} ${and} ${xs[xs.length - 1]}` : xs[0])
     coinciden.push({
-      es: `Ambos eligieron canciones de ${artists.join(' y ')}`,
-      en: `Both picked songs by ${artists.join(' and ')}`,
+      es: `Ambos eligieron canciones de ${join(artists, 'y')}`,
+      en: `Both picked songs by ${join(artists, 'and')}`,
     })
   }
   if (wantsKids(a.hijos) && wantsKids(b.hijos)) {
